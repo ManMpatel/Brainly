@@ -5,32 +5,13 @@ import { ShareIcon } from './icons/ShareIcon';
 
 
 
-function App() {
-    console.log("hii there")
-    console.log("hii there")
-    console.log("hii there")
-    return (
-    <div className="p-6 space-y-4">
-      <div className="bg-purple-600 text-white p-6 rounded-md">
-        Tailwind is working
-      </div>
 
-      <Button
-        variant="primary"
-        text="Add Content"
-        startIcon={<PlusIcon />}
-      />
-
-      <Button
-        variant="secondery"
-        text="Share Brain"
-        startIcon={<ShareIcon />}
-      />
+function App(){
+  return <div className="p-6 flex justify-end gap-4">
+      <Button variant="secondery" text="Add content" startIcon={<PlusIcon className="h-6 w-6"/>} ></Button>
+      <Button variant="primary" text="Add content" startIcon={<ShareIcon className= "h-6 w-6"/>}></Button>
     </div>
-  );
-
 }
-
-
 export default App;
+
 

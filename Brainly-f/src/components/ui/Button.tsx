@@ -1,10 +1,11 @@
 import type { ReactElement ,  ReactNode } from "react";
 
 interface ButtonProps{
-    variant: "primary" | "secondery";
+    variant?: "primary" | "secondery";
     text: string;
-    startIcon: ReactElement;
+    startIcon?: ReactElement;
     children?: ReactNode;
+    // className:string;
 }
 
 const variantClass ={
@@ -12,7 +13,7 @@ const variantClass ={
     "secondery": "bg-purple-200 text-purple-400",
 }
 
-const defaultStyles= "px-40 py-2 rounded-md font-light flex item-center";
+const defaultStyles= "px-4 py-2 rounded-lg font-light flex item-center";
 
 
 
