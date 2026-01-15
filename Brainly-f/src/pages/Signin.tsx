@@ -1,14 +1,16 @@
 import { Button } from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
 import { BrainIcon } from "../icons/BrainIcon";
 import { useRef } from "react";
 // import { BACKEND_URL } from "../config";
 import axios  from "axios";
 import { BACKEND_URL } from "../config";
+// import { Input } from "../components/ui/Input";
+import { useNavigate } from "react-router-dom";
 
 export function Signin(){
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
     async function signin(){
         const username = usernameRef.current?.value;
@@ -17,6 +19,8 @@ export function Signin(){
             username,
             password
             })
+
+         navigate("/dashboard")
         alert("you are signin")
     }
 

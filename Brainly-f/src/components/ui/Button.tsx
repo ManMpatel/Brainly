@@ -2,7 +2,7 @@ import type { ReactElement ,  ReactNode } from "react";
 
 interface ButtonProps{
     variant?: "primary" | "secondery";
-    text: string;
+    text?: string;
     startIcon?: ReactElement;
     children?: ReactNode;
     onClick?: ()=>void;

@@ -8,10 +8,14 @@ import cors from "cors";
 
 const app = express()
 app.use(express.json());
-
-
-
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+app.options("*", cors());
 
 
 app.post("/api/v1/signup", async (req,res)=>{
@@ -63,11 +67,13 @@ app.post("/api/v1/content",(req, res)=>{
 })
 
 app.get("/api/v1/content",userMiddlware,async(req,res)=>{
-    const link = req.body.link;
-    const type = req.body.type;
+    const { title, link, type } = req.body
+    // const link = req.body.link;
+    // const type = req.body.type;
     await ContentModel.create({
         link,
         type,
+        title,
         //@ts-ignore
         userId: req.userId,
         tags:[]
