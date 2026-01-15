@@ -4,7 +4,18 @@ mongoose.connect("mongodb+srv://patelmanm:Manmpatel11@cluster0.inttvey.mongodb.n
 
 const UserSchema = new Schema({
     username: {type:String, unique:true},
-    password: String
+    password: {type:String, require:true},
 })
 
-export const Usermodel= model("user", UserSchema);
+export const Usermodel= model("User", UserSchema);
+
+
+const ContentSchema= new Schema({
+    title: String,
+    type: String,
+    link: String,
+    tags: [{type: mongoose.Types.ObjectId, ref: 'Tag' }],
+    userId: {type:mongoose.Types.ObjectId, ref:'User', required: true}
+})
+
+export const ContentModel = model("Content", ContentSchema);

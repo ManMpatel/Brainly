@@ -1,11 +1,17 @@
-import express, { json } from "express";
+import express from "express";
 import jsonWebToken from "jsonwebtoken"; 
 import mongoose from "mongoose";
 import { Usermodel, ContentModel} from  "./db.js";
 import { userMiddlware } from "./middleware.js";
-const JWT_PASSWORD = '123456';
+import { JWT_PASSWORD } from "./config.js";
+import cors from "cors";
+
 const app = express()
 app.use(express.json());
+
+
+
+app.use(cors());
 
 
 app.post("/api/v1/signup", async (req,res)=>{
@@ -16,7 +22,7 @@ app.post("/api/v1/signup", async (req,res)=>{
     try{
         await Usermodel.create({
             username:username,
-            password:password
+            password:password,
         })
         res.json({
             message:"user signed up"
@@ -43,6 +49,11 @@ app.post("/api/v1/signin",async(req,res)=>{
         },JWT_PASSWORD);
 
         res.json({
+            token
+        })
+
+    }else{
+        res.status(403).json({
             messsage: "incorrect credentials"
         });
     }
@@ -61,6 +72,9 @@ app.get("/api/v1/content",userMiddlware,async(req,res)=>{
         userId: req.userId,
         tags:[]
     })
+    return res.json({
+        message : "content Added"
+    })
 
 })
 
@@ -77,3 +91,4 @@ app.get("/api/v1/brain/:shareLink",(req,res)=>{
 })
 
 app.listen(3000);
+console.log("server is running on port 3000");

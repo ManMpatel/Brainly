@@ -5,4 +5,12 @@ const UserSchema = new Schema({
     password: String
 });
 export const Usermodel = model("user", UserSchema);
+const ContentSchema = new Schema({
+    title: String,
+    type: String,
+    link: String,
+    tags: [{ type: mongoose.Types.ObjectId, ref: 'Tag' }],
+    userId: { type: mongoose.Types.ObjectId, ref: 'User', required: true }
+});
+export const ContentModel = model("content", ContentSchema);
 //# sourceMappingURL=db.js.map
