@@ -5,6 +5,7 @@ import { Usermodel, ContentModel} from  "./db.js";
 import { userMiddlware } from "./middleware.js";
 import { JWT_PASSWORD } from "./config.js";
 import cors from "cors";
+import { findSourceMap } from "module";
 
 const app = express()
 app.use(express.json());
@@ -63,26 +64,42 @@ app.post("/api/v1/signin",async(req,res)=>{
     }
 })
 
-app.post("/api/v1/content",(req, res)=>{
-})
+app.post("/api/v1/content", userMiddlware, async (req, res) => {
+  try {
+    const { title, link, type } = req.body;
+
+    const content = await ContentModel.create({
+      title,
+      link,
+      type,
+      // @ts-ignore
+      userId: req.userId,
+      tags: []
+    });
+
+    return res.status(201).json({
+      message: "Content added",
+      content
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to add content"
+    });
+  }
+});
+
+
 
 app.get("/api/v1/content",userMiddlware,async(req,res)=>{
-    const { title, link, type } = req.body
-    // const link = req.body.link;
-    // const type = req.body.type;
-    await ContentModel.create({
-        link,
-        type,
-        title,
+    const contents = await ContentModel.find({
         //@ts-ignore
-        userId: req.userId,
-        tags:[]
-    })
+        userId: req.userId
+    });
     return res.json({
-        message : "content Added"
-    })
-
-})
+        contents
+    });
+});
 
 app.delete("/api/v1/delet",(req,res)=>{
 

@@ -23,10 +23,11 @@ export function Signup(){
             }
 
             try {
-            await axios.post(BACKEND_URL + "/api/v1/signup", {
+             await axios.post(BACKEND_URL + "/api/v1/signup", {
                 username,
                 password
             });
+
             navigate("/signin")
             alert("Signup successful");
             } catch (err) {

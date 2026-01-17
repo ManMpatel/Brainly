@@ -6,12 +6,13 @@ import { Cart } from '../components/ui/Cart';
 import { CreateContent } from '../components/ui/CreateContent';
 import { useState } from 'react';
 import { Sidebar } from '../components/ui/Sidebar'; 
+import { useContent } from '../hooks/useContent';
 
 
 
 export function Dashboard(){
     const[modelOpen,  setModelOpen ] = useState(false);
-
+    const contents = useContent();
 
   return <div>
             <Sidebar/>
@@ -27,12 +28,11 @@ export function Dashboard(){
               </div>
 
               <div className="flex flex-wrap gap-4 p-6">
-                <Cart/>
-                <Cart/>
-                <Cart/>
-                <Cart/>
-                <Cart/>
-                <Cart/>
+                {contents.map(({type, link ,title})=> <Cart
+                type={type}
+                link={link}
+                title={title}/>
+                )}
               </div>
 
             </div>

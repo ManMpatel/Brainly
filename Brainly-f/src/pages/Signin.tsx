@@ -15,10 +15,18 @@ export function Signin(){
     async function signin(){
         const username = usernameRef.current?.value;
         const password = passwordRef.current?.value;
-        await axios.post(`${BACKEND_URL}/api/v1/signin`,{
+        const res = await axios.post(`${BACKEND_URL}/api/v1/signin`,{
             username,
             password
             })
+
+            const token = res.data.token;
+
+            if(!token) {
+                throw new Error("token not received ");
+            }
+
+            localStorage.setItem("token", token);
 
          navigate("/dashboard")
         alert("you are signin")
