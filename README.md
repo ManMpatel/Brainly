@@ -7,7 +7,7 @@ The project focuses on implementing modern full-stack development practices incl
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * User **Sign Up** and **Sign In**
 * **JWT-based authentication**
@@ -19,7 +19,7 @@ The project focuses on implementing modern full-stack development practices incl
   
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -74,8 +74,11 @@ A full walkthrough video of the project is available, demonstrating:
 * Adding new content
 * Viewing added content
 
-📌 **Demo Video:**
-👉 *(Add your video link here – YouTube / Google Drive / Loom)*
+ **Demo Video:**
+
+https://github.com/user-attachments/assets/f304e451-6500-46db-8871-40b5c1dd3fca
+
+
 
 Example:
 
@@ -85,7 +88,7 @@ https://youtu.be/your-video-link
 
 ---
 
-## 🚀 Getting Started (Run Locally)
+## Getting Started (Run Locally)
 
 ### Prerequisites
 
@@ -133,7 +136,7 @@ npm start
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 * Edit content functionality
 * Delete content functionality
@@ -144,10 +147,10 @@ npm start
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Man Manojkumar Patel**
-📍 Sydney, Australia
+ Sydney, Australia
 🔗 GitHub: [https://github.com/ManMpatel/Brainly](https://github.com/ManMpatel/Brainly)
 
 
