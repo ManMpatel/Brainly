@@ -5,6 +5,21 @@ The project focuses on implementing modern full-stack development practices incl
 
 🚧 **Project Status:** In Progress
 
+## 🎥 Project Demo (Video)
+
+A full walkthrough video of the project is available, demonstrating:
+
+* User registration (Sign Up)
+* User login (Sign In)
+* Dashboard view
+* Adding new content
+* Viewing added content
+
+ **Demo Video:**
+
+https://github.com/user-attachments/assets/f304e451-6500-46db-8871-40b5c1dd3fca
+
+
 ---
 
 ##  Key Features
@@ -63,22 +78,6 @@ Brainly/
 ```
 
 ---
-
-## 🎥 Project Demo (Video)
-
-A full walkthrough video of the project is available, demonstrating:
-
-* User registration (Sign Up)
-* User login (Sign In)
-* Dashboard view
-* Adding new content
-* Viewing added content
-
- **Demo Video:**
-
-https://github.com/user-attachments/assets/f304e451-6500-46db-8871-40b5c1dd3fca
-
-
 
 Example:
 
