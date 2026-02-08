@@ -7,17 +7,18 @@ export function useContent(){
 
 
 
-    useEffect(()=> {
-         axios.get(`${BACKEND_URL}/api/v1/content`,{
+    const fetchContents = async()=> {
+         const response= await axios.get(`${BACKEND_URL}/api/v1/content`,{
             headers:{
                 "Authorization" : `Bearer ${localStorage.getItem("token")}`
-            }
-         })
-            .then((response)=>{
+            },
+         });
             setContents(response.data.contents)
-        })
-    },[])
+        };
+    useEffect(() => {
+        fetchContents();
+    },[] );
  
-    return contents;
+    return {contents, fetchContents };
 
 }

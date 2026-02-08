@@ -13,7 +13,7 @@ export const userMiddlware = (req: Request, res: Response, next: NextFunction) =
   }
   
 
-
+  
   const parts = authHeader.split(" ");
    if (parts.length !== 2) return;
    const token = parts[1] as string; // string

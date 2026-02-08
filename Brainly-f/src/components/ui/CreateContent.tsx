@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 import { CloseIcon } from "../../icons/CloseIcon";
-// import {useState} from "react";
 import { Button } from "./Button";
-// import { YoutubeIcon } from "../../icons/YoutubeIcon";
 import { BACKEND_URL } from "../../config";
 import axios from "axios";
 
@@ -12,8 +10,10 @@ enum ContentType{
 }
 
 
-export function CreateContent({open , OnClose}){
 
+export function CreateContent({open , OnClose , onContentAdded}){
+
+    
     const titleRef = useRef<HTMLInputElement>(null);
     const linkRef = useRef<HTMLInputElement>(null);
     const[type , setType] = useState(ContentType.Youtube);
@@ -34,6 +34,7 @@ export function CreateContent({open , OnClose}){
           "Content-Type": "application/json"
           }
         }) 
+        onContentAdded();
         OnClose();
 
     }
@@ -48,7 +49,7 @@ export function CreateContent({open , OnClose}){
                     <input ref={titleRef} placeholder={"title"} className="px-4 py-2 border border-gray-400 rounded " />
                     <input ref={linkRef} placeholder={"link"} className="px-4 py-2 border border-gray-400 rounded " />
                   </div>
-                      <div className="flex gap-2 ">
+                      <div className="flex gap-2 justify-center pt-4">
                         <Button variant={type === ContentType.Youtube? "primary" : "secondery"} onClick={()=>{
                             setType(ContentType.Youtube)
                         }} text="youtube"/>
@@ -56,7 +57,7 @@ export function CreateContent({open , OnClose}){
                             setType(ContentType.Twitter)
                         }} text="twitter" />
                       </div>
-                  <div className="flex justify-center font-bold pb-2 pt-10">
+                  <div className="flex justify-center font-bold pb-2 pt-4">
                     <Button variant="primary" text="Sumit" onClick={addContent} />
                   </div>
                 </div>

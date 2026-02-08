@@ -1,11 +1,12 @@
 import express from "express";
 import jsonWebToken from "jsonwebtoken"; 
 import mongoose from "mongoose";
-import { Usermodel, ContentModel} from  "./db.js";
+import { Usermodel, ContentModel, ShareLink} from  "./db.js";
 import { userMiddlware } from "./middleware.js";
 import { JWT_PASSWORD } from "./config.js";
 import cors from "cors";
 import { findSourceMap } from "module";
+import type { link } from "fs";
 
 const app = express()
 app.use(express.json());
@@ -105,8 +106,18 @@ app.delete("/api/v1/delet",(req,res)=>{
 
 })
 
-app.post("/api/v1/share",(req,res)=>{
+app.post("/api/v1/shareLink",async (req,res)=>{
+    const{pageId, pageType} = req.body;
 
+    let share = await ShareLink.findOne({pageId , pageType});
+
+    if(!share){
+    share = await ShareLink.create({pageId , pageType})
+    }
+
+    res.json({
+        link: `http://localhost:5173/shared/${share._id}`
+    })
 })
 
 app.get("/api/v1/brain/:shareLink",(req,res)=>{
