@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Cart } from "./Cart";
+// import { Cart } from "./Cart";
 
 type searchBarProps= {
     contents: {
@@ -25,17 +25,5 @@ export default function SearchBar({contents ,onFilter }: searchBarProps){
         <div className="flex">
             <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         </div>
-        {/* <div >
-                {filtered.length > 0 ? (
-                    filtered.map(({type, link ,title})=> <Cart
-                    // id={_id}
-                    type={type}
-                    link={link}
-                    title={title}/>
-                    ))
-                :(
-                    <li>No items found</li>
-                )}
-        </div> */}
     </div>
 }

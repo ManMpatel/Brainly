@@ -1,10 +1,14 @@
 import mongoose, { model, Schema } from "mongoose";
 
-mongoose.connect("mongodb+srv://patelmanm:Manmpatel11@cluster0.inttvey.mongodb.net/");
+mongoose.connect("mongodb+srv://manmpatel101:<db_password>@cluster0.c3qll1m.mongodb.net/brainly").then(()=>{
+    console.log("connected to database")
+}).catch((err)=>{
+    console.log("failed to connect database", err)
+});
 
 const UserSchema = new Schema({
     username: { type: String, unique: true },
-    password: { type: String, require: true },
+    password: { type: String, required: true },
 })
 
 export const Usermodel = model("User", UserSchema);

@@ -10,14 +10,10 @@ import type { link } from "fs";
 
 const app = express()
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-app.options("*", cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 
 
 app.post("/api/v1/signup", async (req,res)=>{
@@ -124,5 +120,5 @@ app.get("/api/v1/brain/:shareLink",(req,res)=>{
 
 })
 
-app.listen(3000);
+app.listen(4000);
 console.log("server is running on port 3000");
